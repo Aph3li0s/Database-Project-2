@@ -6,7 +6,9 @@ def run():
     num_school = int(input())
     print("Nhập số lượng học sinh mỗi trường (10k-11k): ")
     num_students = int(input())
+    # Tạo data
     gen_data.create_data(num_school, num_students)
+    # Input vào database
     sql_db.gen_db()
 
 

@@ -1,3 +1,4 @@
+# Danh sách tên 125 trường
 school_lst = [
     "Trưng Vương",
     "Bùi Thị Xuân",

@@ -1,10 +1,12 @@
 import os
 import pandas as pd
 
+# Đọc dữ liệu từ các file csv
 truong = pd.read_csv("source/csv_table/truong.csv")
 hs = pd.read_csv("source/csv_table/hocsinh.csv")
 hoc = pd.read_csv("source/csv_table/hoctap.csv")
 
+# Hàm xóa các file .sql
 def delete_files():
     for file_name in os.listdir("source/sql_preprocess/sql_insert_data"):
         file_path = os.path.join("source/sql_preprocess/sql_insert_data", file_name)
@@ -20,6 +22,7 @@ def clean_file(sql_file):
 def data_truong():
     sql_file = "source/sql_preprocess/sql_insert_data/truong.sql"
     with open(sql_file, 'w'):
+        # Ghi các dòng đọc được từ file csv và tạo thành câu lệnh
         clean_file(sql_file)
         a = "INSERT INTO truong (matr, tentr, dchitr) VALUES \n"
         with open(sql_file, "a", encoding="utf-8") as f:
@@ -34,6 +37,7 @@ def data_truong():
 def data_hs():
     sql_file = "source/sql_preprocess/sql_insert_data/hs.sql"
     with open(sql_file, 'w'):
+        # Ghi các dòng đọc được từ file csv và tạo thành câu lệnh
         clean_file(sql_file)
         a = "INSERT INTO hs (mahs, ho, ten, cccd, ntns, dchi_hs) VALUES \n"
         with open(sql_file, "a", encoding="utf-8") as f:
@@ -48,6 +52,7 @@ def data_hs():
 def data_hoc():
     sql_file = "source/sql_preprocess/sql_insert_data/hoc.sql"
     with open(sql_file, 'w'):
+        # Ghi các dòng đọc được từ file csv và tạo thành câu lệnh
         clean_file(sql_file)
         a = "INSERT INTO hoc (matr, mahs, namhoc, diemtb, xeploai, kqua) VALUES \n"
         with open(sql_file, "a", encoding="utf-8") as f:
