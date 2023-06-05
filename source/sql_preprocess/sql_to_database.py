@@ -32,12 +32,11 @@ def execute_data(db):
     print("Thời gian để insert dữ liệu vào database: ")
     print(end_time - start_time)
 
-def gen_db():
+def gen_db(db):
     # Gọi các hàm bên file create_sql.py
     create.delete_files()
     create.data_truong()
     create.data_hs()
     create.data_hoc()
     # Lần lượt import vào database truonghoc1 và truonghoc2
-    execute_data("truonghoc1")
-    execute_data("truonghoc2")
+    execute_data(db)

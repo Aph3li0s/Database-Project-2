@@ -9,7 +9,15 @@ def run():
     # Tạo data
     gen_data.create_data(num_school, num_students)
     # Input vào database
-    sql_db.gen_db()
+    input("Nhấn enter để chọn database")
+    while True:
+        print("Nhập database(truonghoc1, truonghoc2). Nhấn 0 để thoát ")
+        database_name = str(input())
+        if database_name == '0':
+            break
+        if database_name != "truonghoc1" and database_name != "truonghoc2":
+            print("Tên database không hợp lệ!")
+        sql_db.gen_db(database_name)
 
 
 run()

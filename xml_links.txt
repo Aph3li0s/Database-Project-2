@@ -1,2 +1,5 @@
-XML/'truonghoc1_TrưngVương_2021_Khá'.xml
-XML/'truonghoc2_TrưngVương_2021_Khá'.xml
+XML/'truonghoc1_NguyễnTrãi_2021_Trungbình'.xml
+XML/'truonghoc2_NguyễnTrãi_2021_Trungbình'.xml
+XML/'truonghoc1_PhanBộiChâu_2021_Khá'.xml
+XML/'truonghoc2_PhanBộiChâu_2021_Khá'.xml
+XML/'truonghoc1_FPT_2023_Giỏi'.xml

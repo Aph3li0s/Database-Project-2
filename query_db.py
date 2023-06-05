@@ -88,7 +88,7 @@ def get_input():
             xml.write("XML/'{}'.xml".format(values[0] + "_" + values[1] + "_" + values[2] + "_" + values[3]) + "\n")
 
             end_time = time.time()
-            print("Thời gian để truy vấn lệnh thứ " + str(cnt) + ": ")
+            print("Thời gian để truy vấn lệnh thứ " + str(cnt + 1) + ": ")
             cnt += 1
             print(end_time - start_time)
 
