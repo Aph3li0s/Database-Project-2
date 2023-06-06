@@ -1,13 +1,14 @@
 import source.create_data as gen_data
 import source.sql_preprocess.sql_to_database as sql_db
-
+import source.generator.score as visualize
 def run():
     print("Nhập số lượng trường (100-120): ")
-    num_school = int(input())
+    num_schools = int(input())
     print("Nhập số lượng học sinh mỗi trường (10k-11k): ")
     num_students = int(input())
+    visualize.visualize_score(num_schools, num_students)
     # Tạo data
-    gen_data.create_data(num_school, num_students)
+    gen_data.create_data(num_schools, num_students)
     # Input vào database
     input("Nhấn enter để chọn database")
     while True:

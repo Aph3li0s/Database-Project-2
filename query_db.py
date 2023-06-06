@@ -2,9 +2,15 @@ import xml.etree.ElementTree as etr
 import xml.sax.saxutils as saxutils
 from sqlalchemy import create_engine
 import xml.dom.minidom as minidom
-import os
 import time
-
+import matplotlib.pyplot as plt
+import os
+def delete_files():
+    for file_name in os.listdir("XML"):
+        file_path = os.path.join("XML", file_name)
+        if os.path.isfile(file_path):
+            os.remove(file_path)
+            print(f"Deleted: {file_path}")
 def clean_file(sql_file):
     if os.stat(sql_file).st_size != 0:
         with open(sql_file, "w", encoding="utf-8") as f:
@@ -57,13 +63,28 @@ def xml_convert(db, school_name, year, score_grade):
             # Ghi vào file xml tương ứng
             xml_file.write(formatted_xml)
 
+def times_visualize(t1, t2):
+    x_ticks = [i + 1 for i in range(len(t1))]  # Generate integer tick values starting from 1
+    plt.plot(x_ticks, t1, label='truonghoc1')
+    plt.plot(x_ticks, t2, label='truonghoc2')
+    plt.xlabel('Số lần')
+    plt.ylabel('Giây')
+    plt.title('Thời gian truy vấn giữa 2 database')
+    plt.legend()
+    plt.xticks(x_ticks)  # Set integer tick values
+    plt.xlim(1, len(t1))  # Set x-axis limits
+    plt.show()
 
 def get_input():
+    delete_files()
+    time_t1 = []
+    time_t2 = []
     print("Hãy xem data trong folder source/csv_table để lấy info truy vấn")
     print("Nhập số lượng lệnh cần truy vấn: ")
     num = int(input())
     command_lst = [] # List để lưu các lệnh vừa được nhập
     print("Định dạng input: truonghoc1, FPT, 2022, Xuất sắc")
+    print("Lưu ý: nên truy vấn 2 database với số lần bằng nhau để so sánh")
     for i in range(num):
         print("Nhập lệnh thứ " + str(i + 1))
         cmd = str(input())
@@ -90,6 +111,12 @@ def get_input():
             end_time = time.time()
             print("Thời gian để truy vấn lệnh thứ " + str(cnt + 1) + ": ")
             cnt += 1
-            print(end_time - start_time)
+            time_taken = end_time - start_time
+            print(time_taken)
+            if values[0] == "truonghoc1":
+                time_t1.append(time_taken)
+            else:
+                time_t2.append(time_taken)
+    times_visualize(time_t1, time_t2)
 
 get_input()

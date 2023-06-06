@@ -14,7 +14,7 @@ def delete_files():
 
 def create_data(num_schools, num_students):
     # Thực hiện xóa file trước khi khởi tạo
-    delete_files()
+    # delete_files()
 
     # Bắt đầu đếm thời gian
     start_time = time.time()

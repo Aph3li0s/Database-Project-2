@@ -1,6 +1,24 @@
 import random
-
+import numpy as np
+import matplotlib.pyplot as plt
 # Hàm random điểm (theo thang 0-10) dựa trên phân phối chuẩn
+
+def visualize_score(num_schools, num_students):
+    # Phổ điểm của học sinh được tạo theo phân phối chuẩn dưới đây
+
+    mean = 6.5  # Trung vị
+    std_dev = 1.5  # Độ lệch chuẩn
+
+    x = np.linspace(0, 10, 100)
+    y = (1 / (std_dev * np.sqrt(2 * np.pi))) * np.exp(-(x - mean) ** 2 / (2 * std_dev ** 2))
+    y = y * num_students * num_schools
+
+    plt.plot(x, y, color='blue', linewidth=2)
+    plt.xlabel('Điểm')
+    plt.ylabel('Số học sinh')
+    plt.title('Phổ điểm học sinh trung học')
+
+    plt.show()
 def get_score(num_results): # num_results = số lượng điểm cho mỗi học sinh
     mean = 6.5 # Trung vị = 6.5 (mức điểm trung bình)
     std_dev = 1.5 # Độ lệch chuẩn 1.5 (để phổ điểm lệch phải)
@@ -19,4 +37,4 @@ def get_score(num_results): # num_results = số lượng điểm cho mỗi họ
 
     return scores
 
-
+#visualize_score()
